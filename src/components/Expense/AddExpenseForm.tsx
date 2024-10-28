@@ -22,7 +22,7 @@ const AddExpenseForm = () => {
     }
     setExpenses((prevExpenses) => [...prevExpenses, newExpense]);
   };
-
+  
   return (
     <form onSubmit={(event) => onSubmit(event)}>
       <div className="row">
@@ -47,7 +47,7 @@ const AddExpenseForm = () => {
             id="cost"
             value={cost}
             // HINT: onChange={}
-            onChange={(e) => setCost(parseFloat(e.target.value))}
+            onChange={(e) => setCost(e.target.value===""?"":parseFloat(e.target.value))}
           ></input>
         </div>
         <div className="col-sm">
