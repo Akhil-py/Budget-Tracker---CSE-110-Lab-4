@@ -19,7 +19,7 @@ describe('Create expense and check update to expense list and budget',()=>{
     const names=screen.getByText("UCSD");
     const newcost=screen.getByText("$60");
     const budget=screen.getByText("Remaining: $1940");
-    const spent=screen.getByText("Spent so far: $60")
+    const spent=screen.getByText("Spent so far: $80")
     expect(budget).toBeInTheDocument();
     expect(spent).toBeInTheDocument();
     expect(names).toBeInTheDocument();
