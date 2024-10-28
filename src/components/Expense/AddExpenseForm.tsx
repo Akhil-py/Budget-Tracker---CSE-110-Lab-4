@@ -29,6 +29,7 @@ const AddExpenseForm = () => {
         <div className="col-sm">
           <label htmlFor="name">Name</label>
           <input
+            data-testid="nameInput"
             required
             type="text"
             className="form-control"
@@ -41,6 +42,7 @@ const AddExpenseForm = () => {
         <div className="col-sm">
           <label htmlFor="cost">Cost</label>
           <input
+            data-testId="costInput"
             required
             type="text"
             className="form-control"
