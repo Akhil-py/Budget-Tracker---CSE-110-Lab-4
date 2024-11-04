@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useContext } from "react";
 import { AppContext } from "../../context/AppContext";
 import { Expense } from "../../types/types";
+import { createExpense } from "../../utils/expense-utils";
 
 const AddExpenseForm = () => {
   // Exercise: Consume the AppContext here
@@ -17,9 +18,10 @@ const AddExpenseForm = () => {
     // Exercise: Add add new expense to expenses context array
     const newExpense: Expense = {
       id: Math.floor(Math.random() * 10000).toString(),
-      name: name,
+      description: name,
       cost: parseFloat(cost.toString()),
     }
+    createExpense(newExpense);
     setExpenses((prevExpenses) => [...prevExpenses, newExpense]);
   };
   
