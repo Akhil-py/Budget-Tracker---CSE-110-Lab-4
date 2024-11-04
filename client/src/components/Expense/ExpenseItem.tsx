@@ -6,14 +6,16 @@ import { deleteExpense } from "../../utils/expense-utils";
 const ExpenseItem = (currentExpense: Expense) => {
   // Exercise: Consume the AppContext here
   const {expenses, setExpenses} = useContext(AppContext);
-
-  const handleDeleteExpense = (currentExpense: Expense) => {
-    // Exercise: Remove expense from expenses context array
-    //setExpenses(prevExpenses => prevExpenses.filter((_, i) => i !== currentExpense));
+  const handleDeleteExpense = async (currentExpense: Expense) => {
     const index = expenses.findIndex(item => item.id === currentExpense.id);
     if (index !== -1) {
       const newArray = [...expenses.slice(0, index), ...expenses.slice(index + 1)];
-      setExpenses(newArray);
+      try {
+        await deleteExpense(currentExpense.id); // Await here
+        setExpenses(newArray);
+      } catch (error) {
+        console.error("Failed to delete expense:", error);
+      }
     }
   };
 

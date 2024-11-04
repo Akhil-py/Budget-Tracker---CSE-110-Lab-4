@@ -22,8 +22,9 @@ export const deleteExpense = async (id: string): Promise<void> => {
     	method: "DELETE",
 	});
 	if (!response.ok) {
-    	throw new Error("Failed to delete expense");
-	}
+		const errorText = await response.text(); // Get the actual error message from the backend
+		throw new Error(`Failed to delete expense: ${errorText}`);
+	  }
 };
 
 // Function to get all expenses from the backend. Method: GET
