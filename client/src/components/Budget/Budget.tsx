@@ -1,5 +1,6 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { AppContext } from "../../context/AppContext";
+import { fetchBudget, updateBudget } from "../../utils/budget-utils";
 
 const Budget = () => {
   const { budget, setBudget } = useContext(AppContext);
@@ -19,8 +20,9 @@ const Budget = () => {
 
   // Handle save budget
   const handleSaveClick = () => {
-    setBudget(inputBudget); // Update context state with new budget
+    updateBudget(inputBudget); // Update budget
     setEditing(false); // Exit editing mode
+    console.log("Success");
   };
 
   // Handle cancel editing
@@ -29,6 +31,20 @@ const Budget = () => {
     setInputBudget(budget); // Reset input to current budget
   };
 
+
+  // Fetch budget on component mount
+  useEffect(() => {
+    loadBudget();
+  }, []);
+  
+    // Function to load expenses and handle errors
+    const loadBudget = async () => {
+    try {
+      setBudget(await fetchBudget());
+    } catch (err: any) {
+      console.log(err.message);
+    }
+    };
   return (
     <div className="alert alert-secondary p-3 d-flex align-items-center justify-content-between">
       {editing ? (
