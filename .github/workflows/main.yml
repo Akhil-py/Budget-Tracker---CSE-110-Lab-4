@@ -13,9 +13,9 @@ jobs:
       - uses: actions/checkout@v4
       - name: Install Dependencies
         run: |
-          cd Budget-Tracker---CSE-110-Lab-4/client
+          cd ../client
           npm install
       - name: Unit Test
         run: |
-          cd Budget-Tracker---CSE-110-Lab-4/client
+          cd ../client
           npm test
