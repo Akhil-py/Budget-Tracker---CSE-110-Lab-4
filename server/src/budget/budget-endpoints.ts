@@ -11,7 +11,7 @@ export function createBudgetEndpoints(app: any, budget: { amount: number }) {
 
     // Update the budget
     app.put("/budget", (req: Request, res: Response) => {
-
+        console.log("SERVER ROUTE REQUEST RECEIVED 1");
         updateBudget(res, req.body, budget);
 
     });
