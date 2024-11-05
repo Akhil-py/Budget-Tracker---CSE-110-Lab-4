@@ -35,7 +35,8 @@ export const updateBudget = async (budget: number): Promise<number> => {
     
     const responseBody = await response.text();
     if (responseBody) {
-        return JSON.parse(responseBody);
+        console.log("responseBody: ", responseBody);
+        return JSON.parse(responseBody).amount;
     } else {
         console.warn("Received an empty response");
         return budget; 

@@ -19,8 +19,10 @@ const Budget = () => {
   };
 
   // Handle save budget
-  const handleSaveClick = () => {
-    updateBudget(inputBudget); // Update budget
+  const handleSaveClick = async () => {
+    const newBudget = await updateBudget(inputBudget); // Update budget
+    console.log("newBudget: ", newBudget);
+    setBudget(newBudget);
     setEditing(false); // Exit editing mode
     console.log("Success");
   };
