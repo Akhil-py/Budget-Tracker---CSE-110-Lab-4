@@ -7,6 +7,7 @@ export function createExpenseEndpoints(app: any, db: Database) {
    app.post("/expenses", (req: Request, res: Response) => {
 
        createExpenseServer(req, res, db);
+       console.log("Loaded createExpenseServer");
 
    });
 
@@ -14,6 +15,7 @@ export function createExpenseEndpoints(app: any, db: Database) {
    app.delete("/expenses/:id", (req: Request, res: Response) => {
 
        deleteExpense(req, res, db);
+       console.log("Loaded delete expense");
 
    });
 
@@ -21,6 +23,7 @@ export function createExpenseEndpoints(app: any, db: Database) {
    app.get("/expenses", (req: Request, res: Response) => {
 
        getExpenses(req, res, db);
+       console.log("Loaded get expenses");
 
    });
 

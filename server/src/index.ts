@@ -23,12 +23,13 @@ app.listen(port, () => {
  const db = await initDB();
 
  // Root endpoint to get test if the server is running
- app.get("/", (res: Response) => {
+ app.get("/", (req: Request, res: Response) => {
    res.send({ "data": "Hello, TypeScript Express!" });
-   res.status(200);
+   //res.status(200);
  });
 
+ console.log("Load check 1");
  createExpenseEndpoints(app, db);
-
+ console.log("Load check 2");
  createBudgetEndpoints(app, budget);
 })();
